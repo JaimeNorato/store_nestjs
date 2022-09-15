@@ -7,10 +7,12 @@ import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 import { DatabaseModule } from './database/database.module';
 
+import { environment } from './enviroments';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '.env',
+      envFilePath: environment[process.env.NODE_ENV] || '.env',
       isGlobal: true,
     }),
     HttpModule,
